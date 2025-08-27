@@ -3,7 +3,7 @@ package fr.diginamic.demo;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user_app") // nom de la table personnalisé
+@Table(name = "user_app")
 public class UserApp {
 
     @Id
