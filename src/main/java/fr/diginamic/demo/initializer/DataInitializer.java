@@ -1,7 +1,7 @@
-package fr.diginamic.demo;
+package fr.diginamic.demo.initializer;
 
-import fr.diginamic.demo.UserApp;
-import fr.diginamic.demo.UserAppRepository;
+import fr.diginamic.demo.entity.UserApp;
+import fr.diginamic.demo.repository.UserAppRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

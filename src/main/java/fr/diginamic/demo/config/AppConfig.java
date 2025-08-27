@@ -1,4 +1,4 @@
-package fr.diginamic.demo;
+package fr.diginamic.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

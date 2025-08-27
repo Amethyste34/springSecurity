@@ -1,4 +1,4 @@
-package fr.diginamic.demo;
+package fr.diginamic.demo.entity;
 
 import jakarta.persistence.*;
 

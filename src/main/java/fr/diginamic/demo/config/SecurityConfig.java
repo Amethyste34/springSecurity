@@ -1,4 +1,4 @@
-package fr.diginamic.demo;
+package fr.diginamic.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/hello/public").permitAll()   // GET /hello/public
+                        .requestMatchers("/hello/public", "/register").permitAll()   // GET /hello/public
                         .requestMatchers("/hello/public").permitAll()   // POST /hello/public
                         .anyRequest().authenticated()                  // tout le reste doit être connecté
                 )
