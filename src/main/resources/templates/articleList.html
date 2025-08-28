@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des articles</title>
+</head>
+<body>
+<h2>Liste des articles</h2>
+
+<ul>
+    <li th:each="article : ${articles}">
+        <b th:text="${article.titre}"></b> -
+        <span th:text="${article.contenu}"></span>
+    </li>
+</ul>
+
+<p><a th:href="@{/article/new}">Créer un nouvel article</a></p>
+</body>
+</html>

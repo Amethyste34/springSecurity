@@ -13,22 +13,29 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/hello/public", "/register").permitAll()   // GET /hello/public
-                        .requestMatchers("/hello/public").permitAll()   // POST /hello/public
-                        .anyRequest().authenticated()                  // tout le reste doit être connecté
+                        // accès public
+                        .requestMatchers(
+                                "/hello/public",
+                                "/register",
+                                "/article/list"
+                        ).permitAll()
+                        // nécessite d'être connecté
+                        .requestMatchers("/article/new").authenticated()
+                        // toutes les autres requêtes → authentification
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")                           // page custom
-                        .defaultSuccessUrl("/hello/private", true)     // redirection après login réussi
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/hello/private", false)
                         .usernameParameter("email")
-                        .failureUrl("/hello/public")                   // redirection si login échoué
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/hello/public")             // redirection après logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/hello/public")
                         .permitAll()
                 )
-                .csrf(AbstractHttpConfigurer::disable);            // optionnel pour simplifier les tests POST
+                .csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }
